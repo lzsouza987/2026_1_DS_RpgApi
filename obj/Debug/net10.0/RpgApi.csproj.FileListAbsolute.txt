@@ -156,3 +156,4 @@ D:\Local\2DS\DS-Luiz\RpgApi\bin\Debug\net10.0\runtimes\win\lib\net9.0\Microsoft.
 D:\Local\2DS\DS-Luiz\RpgApi\bin\Debug\net10.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\Local\2DS\DS-Luiz\RpgApi\bin\Debug\net10.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\Local\2DS\DS-Luiz\RpgApi\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Local\2DS\DS-Luiz\RpgApi\obj\Debug\net10.0\RpgApi.sourcelink.json
