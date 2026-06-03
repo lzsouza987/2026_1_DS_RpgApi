@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using RpgApi.Data;
 using RpgApi.Models;
 using RpgApi.Utils;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RpgApi.Controllers
 {
@@ -27,6 +28,28 @@ namespace RpgApi.Controllers
         {
             _context = context;
             _configuration = configuration;
+        }
+
+        private string CriarToken(Usuario usuario)
+        {
+            List<Claim> claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString()),
+                new Claim(ClaimTypes.Name, usuario.Username)
+            };
+
+            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8
+            .GetBytes(_configuration.GetSection("ConfiguracaoToken:Chave").Value));
+            SigningCredentials creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+            SecurityTokenDescriptor tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.UtcNow.AddMinutes(2),
+                SigningCredentials = creds
+            };
+            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+            SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
 
         private async Task<bool> UsuarioExistente(string username)
@@ -87,8 +110,9 @@ namespace RpgApi.Controllers
 
                     usuario.PasswordHash = null;
                     usuario.PasswordSalt = null;
-                    
-                    return Ok(usuario.Id);
+                    usuario.Token = CriarToken(usuario);
+
+                    return Ok(usuario);
                 }
             }
             catch (System.Exception ex)
@@ -219,33 +243,33 @@ namespace RpgApi.Controllers
             {
                 return BadRequest(ex.Message);
             }
-        } 
-        
-         //Método para alteração da foto 
-        [HttpPut("AtualizarFoto")] 
-        public async Task<IActionResult> AtualizarFoto(Usuario u) 
-        { 
-            try 
-            { 
-                Usuario usuario = await _context.TB_USUARIOS  
-                   .FirstOrDefaultAsync(x => x.Id == u.Id); 
- 
-                usuario.Foto = u.Foto;                 
- 
-                var attach = _context.Attach(usuario); 
-                attach.Property(x => x.Id).IsModified = false; 
-                attach.Property(x => x.Foto).IsModified = true;                 
- 
-                int linhasAfetadas = await _context.SaveChangesAsync();  
-                return Ok(linhasAfetadas);  
-            } 
-            catch (System.Exception ex) 
-            { 
-                return BadRequest(ex.Message); 
-            } 
-        } 
+        }
 
-  
+        //Método para alteração da foto 
+        [HttpPut("AtualizarFoto")]
+        public async Task<IActionResult> AtualizarFoto(Usuario u)
+        {
+            try
+            {
+                Usuario usuario = await _context.TB_USUARIOS
+                   .FirstOrDefaultAsync(x => x.Id == u.Id);
+
+                usuario.Foto = u.Foto;
+
+                var attach = _context.Attach(usuario);
+                attach.Property(x => x.Id).IsModified = false;
+                attach.Property(x => x.Foto).IsModified = true;
+
+                int linhasAfetadas = await _context.SaveChangesAsync();
+                return Ok(linhasAfetadas);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
 
 
 
