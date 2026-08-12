@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Local\\2DS\\DS-Luiz\\RpgApi\\RpgApi.csproj": {}
+    "D:\\PastaLocal\\3DS\\Api\\RpgApi\\RpgApi.csproj": {}
   },
   "projects": {
-    "D:\\Local\\2DS\\DS-Luiz\\RpgApi\\RpgApi.csproj": {
+    "D:\\PastaLocal\\3DS\\Api\\RpgApi\\RpgApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Local\\2DS\\DS-Luiz\\RpgApi\\RpgApi.csproj",
+        "projectUniqueName": "D:\\PastaLocal\\3DS\\Api\\RpgApi\\RpgApi.csproj",
         "projectName": "RpgApi",
-        "projectPath": "D:\\Local\\2DS\\DS-Luiz\\RpgApi\\RpgApi.csproj",
-        "packagesPath": "D:\\NugetPackages",
-        "outputPath": "D:\\Local\\2DS\\DS-Luiz\\RpgApi\\obj\\",
+        "projectPath": "D:\\PastaLocal\\3DS\\Api\\RpgApi\\RpgApi.csproj",
+        "packagesPath": "D:\\NUGET_PACKAGES",
+        "outputPath": "D:\\PastaLocal\\3DS\\Api\\RpgApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -31,6 +31,7 @@
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -45,10 +46,11 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
@@ -101,7 +103,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
