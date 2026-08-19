@@ -17,7 +17,7 @@ using System.Net.Sockets;
 
 namespace RpgApi.Controllers
 {
-    [Authorize(Roles="Jogador,Admin")]
+    //[Authorize(Roles="Jogador,Admin")]
     [ApiController]
     [Route("[controller]")]
     public class PersonagensController : ControllerBase

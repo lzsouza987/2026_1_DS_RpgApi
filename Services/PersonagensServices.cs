@@ -83,7 +83,7 @@ namespace RpgApi.Services
             var resultado = _context
                 .Database.SqlQueryRaw<PersonagemDto>(sql.ToString(), parameters.ToArray());
 
-            return resultado.ToList();
+            return await resultado.ToListAsync();
         }
     }
 }
